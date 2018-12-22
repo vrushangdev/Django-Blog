@@ -1,25 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from blog.models import Post
+from django.contrib.auth.models import User
 
-posts =[
-    {
-        'author':'Vrushang Desai',
-        'title':'Blog Post One',
-        'content':'First Post Content',
-        'date_posted':'August 27, 2018'
-    },
-     {
-        'author':'Bull Desai',
-        'title':'Blog Post two',
-        'content':'Second Post Content',
-        'date_posted':'August 28, 2018'
-    }
-]
 
 
 def home(request):
     context = {
-        'posts':posts
+        'posts':Post.objects.all()
     }
     return render(request,'blog/home.html',context)
 def about(request):
